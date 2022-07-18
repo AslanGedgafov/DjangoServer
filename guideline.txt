@@ -9,4 +9,4 @@ sudo pip3 install virtualenv
 	now we can run our empty server on lockal mashine by this comand <python manage.py runserver> 
 5. To create SQL DataBase (sqlite3) (we can swith later for PostgreSQL) run <python manage.py migrate>
 6. To create Admin in the website run <pytho manage.py createsuperuser>
-
+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
