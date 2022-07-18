@@ -1,5 +1,7 @@
+sudo pip uninstall virtualenv
+sudo pip3 install virtualenv
 1. Creating environment for this project and the future server to run python from env file, not from lockal laptop
-<python3.9 -m venv env>
+<python3 -m venv env>
 2. Ctrl+Shift+P to go to command menue and type in <select interpriter> pick Python select interpreter 
 	Then it will show you list of Python interpreters, pick one with ('env':venv) in the name 
 3. Install Django  <pip install django> follow the instructions and update pip if needed
