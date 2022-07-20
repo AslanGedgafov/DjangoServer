@@ -1,3 +1,4 @@
+---Linux Server creation---
 sudo pip uninstall virtualenv
 sudo pip3 install virtualenv
 1. Creating environment for this project and the future server to run python from env file, not from lockal laptop
@@ -9,4 +10,42 @@ sudo pip3 install virtualenv
 	now we can run our empty server on lockal mashine by this comand <python manage.py runserver> 
 5. To create SQL DataBase (sqlite3) (we can swith later for PostgreSQL) run <python manage.py migrate>
 6. To create Admin in the website run <python manage.py createsuperuser>
+
+
+---DigitalOcean---deploiment---
+1. Go Network and create VPC network (privet)
+	Pick datacenter region (NYC1), Configur my own IP range(Address range prefix 192.168.33.0, Network size 24, Add name - django
+2. Create SSH key In terminal execute comand <ssh-keygen>
+3. Create a Droplet and Add ssh public key 
+4. Go to add a domain name and add webpomelo.com
+5. Go to your droplet and click console, it will open remote linux terminal, In terminal execute <ssh root@webpomelo.com> if needed to get access to cloud machine and start configuring server
+6. Create user to avoid operate server under root credentials execute <adduser userName> user naem is joel
+7. Execute <usermod -aG sudo joel> to update user account
+8. Seting up a Firewall, execute <ufw app list> there should be OpenSSH option, 	execute <ufw allow OpenSSH> it will set up access only thrue SSH port
+	execute <ufw enable> and <y> fot Yes
+	and execute <ufw allow 8080> it will allow us to use port 8080 		will need it later to test the app
+9. We need to give joel SSH access, execute <mkdir -p /home/joel/.ssh> to create .ssh directory for joel, Then execute <cp ~/.ssh/authorized_keys /home/joel/.ssh/> to copy ssh autorization key to joel, then to recursivly change file owner and group execute <chown -R joel:joel /home/joel/.ssh>, now if you go to /home/joel/.ssh directory and execute <ls -la> instead of root you will see joel
+10. Now swith from root to joel by executing <su joel>
+11. Preparing server to deploying, execute <sudo apt update && sudo apt install -y python3-pip python3-dev python3-venv nginx curl>
+12. To check we can allow Nginx to pop up on our web page we need to execute <sudo ufw app list> to see and execute <sudo ufw allow 'Nginx Full'> Now we can check our URL to stop Nginx <sudo systemctl stop nginx>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

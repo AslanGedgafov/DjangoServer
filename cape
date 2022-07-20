@@ -1,0 +1,52 @@
+[1mdiff --git a/guideline.txt b/guideline.txt[m
+[1mindex 293bc73..d747e25 100644[m
+[1m--- a/guideline.txt[m
+[1m+++ b/guideline.txt[m
+[36m@@ -1,3 +1,4 @@[m
+[32m+[m[32m---Linux Server creation---[m
+ sudo pip uninstall virtualenv[m
+ sudo pip3 install virtualenv[m
+ 1. Creating environment for this project and the future server to run python from env file, not from lockal laptop[m
+[36m@@ -9,4 +10,42 @@[m [msudo pip3 install virtualenv[m
+ 	now we can run our empty server on lockal mashine by this comand <python manage.py runserver> [m
+ 5. To create SQL DataBase (sqlite3) (we can swith later for PostgreSQL) run <python manage.py migrate>[m
+ 6. To create Admin in the website run <python manage.py createsuperuser>[m
+[32m+[m
+[32m+[m
+[32m+[m[32m---DigitalOcean---deploiment---[m
+[32m+[m[32m1. Go Network and create VPC network (privet)[m
+[32m+[m	[32mPick datacenter region (NYC1), Configur my own IP range(Address range prefix 192.168.33.0, Network size 24, Add name - django[m
+[32m+[m[32m2. Create SSH key In terminal execute comand <ssh-keygen>[m
+[32m+[m[32m3. Create a Droplet and Add ssh public key[m[41m [m
+[32m+[m[32m4. Go to add a domain name and add webpomelo.com[m
+[32m+[m[32m5. Go to your droplet and click console, it will open remote linux terminal, In terminal execute <ssh root@webpomelo.com> if needed to get access to cloud machine and start configuring server[m
+[32m+[m[32m6. Create user to avoid operate server under root credentials execute <adduser userName> user naem is joel[m
+[32m+[m[32m7. Execute <usermod -aG sudo joel> to update user account[m
+[32m+[m[32m8. Seting up a Firewall, execute <ufw app list> there should be OpenSSH option, 	execute <ufw allow OpenSSH> it will set up access only thrue SSH port[m
+[32m+[m	[32mexecute <ufw enable> and <y> fot Yes[m
+[32m+[m	[32mand execute <ufw allow 8080> it will allow us to use port 8080 		will need it later to test the app[m
+[32m+[m[32m9. We need to give joel SSH access, execute <mkdir -p /home/joel/.ssh> to create .ssh directory for joel, Then execute <cp ~/.ssh/authorized_keys /home/joel/.ssh/> to copy ssh autorization key to joel, then to recursivly change file owner and group execute <chown -R joel:joel /home/joel/.ssh>, now if you go to /home/joel/.ssh directory and execute <ls -la> instead of root you will see joel[m
+[32m+[m[32m10. Now swith from root to joel by executing <su joel>[m
+[32m+[m[32m11. Preparing server to deploying, execute <sudo apt update && sudo apt install -y python3-pip python3-dev python3-venv nginx curl>[m
+[32m+[m[32m12. To check we can allow Nginx to pop up on our web page we need to execute <sudo ufw app list> to see and execute <sudo ufw allow 'Nginx Full'> Now we can check our URL to stop Nginx <sudo systemctl stop nginx>[m
+[41m+[m
+[41m+[m
+[41m+[m
+[41m+[m
+[41m+[m
+[41m+[m
+[41m+[m
+[41m+[m
+[41m+[m
+[41m+[m
+[41m+[m
+[41m+[m
+[41m+[m
+[41m+[m
+[41m+[m
+[41m+[m
+[41m+[m
+[41m+[m
+[41m+[m
+[41m+[m
+ [m
